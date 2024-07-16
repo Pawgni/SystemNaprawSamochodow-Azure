@@ -37,17 +37,22 @@
 ## Screenshots
 
 **Strona główna**
-![Strona główna](Screenshots/stronaglowna.png)
+![](Screenshots/glowna.png)
 
-**Rejestracja**
-![Rejestracja](Screenshots/rejestracja.png)
+**Panel z Autami**
+![](Screenshots/auta.png)
 
-**Logowanie**
-![Logowanie](Screenshots/logowanie.png)
+**Szczegóły**
+![](Screenshots/szczegoly.png)
 
-**Panel Użytkownika**
-![Panel Użytkownika](Screenshots/paneluzytkownika.png)
+**Dodaj**
+![](Screenshots/add.png)
 
+**Edytuj**
+![](Screenshots/edit.png)
+
+**Panel ze Zdarzeniami**
+![](Screenshots/events.png)
 
 ## Instalacja
 Aby uruchomić projekt lokalnie:
