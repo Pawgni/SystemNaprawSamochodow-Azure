@@ -34,6 +34,21 @@
 - Zarządzanie raportami uszkodzeń.
 - Asynchroniczne przesyłanie plików do Azure Blob Storage.
 
+## Screenshots
+
+**Strona główna**
+![Strona główna](Screenshots/stronaglowna.png)
+
+**Rejestracja**
+![Rejestracja](Screenshots/rejestracja.png)
+
+**Logowanie**
+![Logowanie](Screenshots/logowanie.png)
+
+**Panel Użytkownika**
+![Panel Użytkownika](Screenshots/paneluzytkownika.png)
+
+
 ## Instalacja
 Aby uruchomić projekt lokalnie:
 1. Sklonuj repozytorium.
