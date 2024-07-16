@@ -1,0 +1,88 @@
+﻿@model IEnumerable<SystemRepairCar.Models.Car>
+
+@{
+    ViewData["Title"] = "Car Inventory";
+    var searchString = ViewData["CurrentFilter"] as string;
+    var filteredCars = string.IsNullOrEmpty(searchString) ? Model : Model.Where(c =>
+        c.Name.Contains(searchString, StringComparison.OrdinalIgnoreCase) ||
+        c.Model.Contains(searchString, StringComparison.OrdinalIgnoreCase) ||
+        c.Year.ToString().Contains(searchString, StringComparison.OrdinalIgnoreCase)
+    ).ToList();
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row mb-3">
+    <div class="col-md-6 text-right">
+        <a asp-action="Create" class="btn btn-primary">Add New Car</a>
+    </div>
+    <div class="col-md-6">
+        <form asp-action="Index" method="get">
+            <div class="input-group">
+                <input type="text" name="searchString" class="form-control" placeholder="Search by name, model, or year" value="@searchString" />
+                <button type="submit" class="btn btn-secondary"><i class="fas fa-search"></i> Search</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Car</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Type</th>
+                <th>Image</th>
+                <th>Damage Reports</th>
+                <th>Created At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var car in filteredCars)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => car.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => car.Model)</td>
+                    <td>@Html.DisplayFor(modelItem => car.Year)</td>
+                    <td>@Html.DisplayFor(modelItem => car.Type)</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(car.Image))
+                        {
+                            <img src="@car.Image" alt="@car.Name" style="max-width: 100px; max-height: 100px;" />
+                        }
+                        else
+                        {
+                            <span>No Image</span>
+                        }
+                    </td>
+                    <td>
+                        @if (car.DamageReports != null && car.DamageReports.Any())
+                        {
+                            <ul>
+                                @foreach (var report in car.DamageReports)
+                                {
+                                    <li><a href="@report" target="_blank">View Report</a></li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <span>No reports</span>
+                        }
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => car.CreatedAt)</td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a asp-action="Details" asp-route-id="@car.Id" class="btn btn-info btn-sm">Details</a>
+                            <a asp-action="Edit" asp-route-id="@car.Id" class="btn btn-primary btn-sm">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@car.Id" class="btn btn-danger btn-sm">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

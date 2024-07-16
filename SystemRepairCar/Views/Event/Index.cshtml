@@ -1,0 +1,26 @@
+﻿@model IEnumerable<SystemRepairCar.Models.EventMessage>
+
+@{
+    ViewData["Title"] = "Event Messages";
+}
+
+<div class="container">
+    <h1 class="mt-4">Event Messages</h1>
+    <table class="table table-hover table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th>Message</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var message in Model)
+            {
+                <tr>
+                    <td>@message.Message</td>
+                    <td>@message.CreatedAt</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
